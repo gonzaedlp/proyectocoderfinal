@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block contenido_que_cambia %}
+
+{% for element in listar_productos %}
+<div class="card" style="width: 18rem;">
+  {% if element.image %}
+  <img src="{{element.image.url}}" class="card-img-top" alt="...">
+  {% else %}
+  <img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/07/220719164934-01-inexpensive-food-healthy-stock-full-169.jpeg?quality=100&strip=info" class="card-img-top" alt="...">
+  {% endif %}
+  <div class="card-body">
+    <h5 class="card-title"> {{element.name}} </h5>
+    <h5 class="card-title">Precio: $ {{element.price}} </h5>
+    <h5 class="card-title">Stock: {{element.stock}} </h5>
+
+    <a class="btn btn-primary" href="#">Agregar</a>
+
+    {% if request.user.is_authenticated and request.user.is_superuser %}
+    <a class="btn btn-primary" href="/products/update-products/{{element.id}}/">Editar</a>
+    <a class="btn btn-danger" href="/products/delete-products/{{element.id}}/">Borrar</a>
+    {% endif %}
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}

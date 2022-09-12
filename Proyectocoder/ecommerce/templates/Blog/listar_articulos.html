@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contenido_que_cambia %}
+
+{% for element in listar_articulos %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">el articulo es:{{element.titulo}} </h5>
+      <p class="card-text">{{element.descripcion}}</p>
+    </div>
+  </div>
+  <a class="btn btn-primary" href="#">Leer más</a>
+
+ 
+{% endfor %}
+{% endblock %}

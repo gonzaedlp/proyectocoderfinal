@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block contenido_que_cambia %}
+<form class="mx-1 mx-md-4" form action="" method="POST">
+    {% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+        {{errors}}
+    </table>
+        <p><input type="submit" value="Registrarme"></p>
+
+    </div>
+
+
+</form>
+   
+{% endblock %}
